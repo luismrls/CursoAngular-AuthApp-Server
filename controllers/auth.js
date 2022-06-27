@@ -1,5 +1,6 @@
 const { response } =  require('express');
-const Usuario = require('../models/Usuario')
+const Usuario = require('../models/Usuario');
+const bcrypt = require('bcryptjs');
 
 
 const crearUsuario = async (req, res = response) => {
@@ -20,6 +21,8 @@ const crearUsuario = async (req, res = response) => {
         const dbUsuario = new Usuario( req.body );
 
         // Encripatar contraseñas con hash
+        const salt = bcrypt.genSaltSync()
+        dbUsuario.password = bcrypt.hashSync( password, salt)
 
         // Generar JWT
 

@@ -15,7 +15,7 @@ const crearUsuario = (req, res = response) => {
 const loginUsuario = (req, res = response) => {
 
     const errors = validationResult( req );
-    
+
     const { email, password } = req.body;
     console.log(email, password);
 
